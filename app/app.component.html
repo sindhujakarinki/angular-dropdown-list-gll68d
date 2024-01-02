@@ -1,0 +1,143 @@
+<div class="body">
+  <div class="container">
+    <div class="rule-container">
+      <h3>Rule:</h3>
+      <h3 style="color: #0f0e3e; margin-left: 10px;">Do_Compare</h3>
+    </div>
+    <br />
+    <!-- <div class="drag">
+      <div class="drag-box">
+        <span>for </span>
+      </div>
+      <div class="drag-box">
+        <span>if </span>
+      </div>
+    </div> -->
+    <div class="drag">
+      <div
+        class="drag-box"
+        (click)="showText('for')"
+        [class.active]="activeBlock === 'for'"
+      >
+        <span>for </span>
+      </div>
+      <div
+        class="drag-box"
+        (click)="showText('if')"
+        [class.active]="activeBlock === 'if'"
+      >
+        <span>if </span>
+      </div>
+    </div>
+
+    <div *ngIf="activeBlock === 'for'">
+      <div class="section">
+        <div class="button-box">
+          <span>for </span>
+        </div>
+        <textarea [(ngModel)]="schedule.keepForText" autosize></textarea>
+        <div class="button-box">
+          <span>do</span>
+        </div>
+        <div class="then">
+          <select [(ngModel)]="schedule.selectedOption">
+            <option value="" disabled>Select</option>
+            <option
+              *ngFor="let item of dataList"
+              [value]="item.name"
+              [style.color]="item.color"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="section">
+        <div class="button-box">
+          <span>for </span>
+        </div>
+        <textarea [(ngModel)]="schedule.keepForText" autosize></textarea>
+        <div class="button-box">
+          <span>do</span>
+        </div>
+        <div class="then">
+          <select [(ngModel)]="schedule.selectedOption">
+            <option value="" disabled>Select</option>
+            <option
+              *ngFor="let item of dataList"
+              [value]="item.name"
+              [style.color]="item.color"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div> -->
+      <div *ngIf="schedule.selectedOption === 'Approve'" class="section2">
+        <div class="button-box">
+          <span>If</span>
+        </div>
+        <div class="textarea">
+          <textarea [(ngModel)]="schedule.keepForText2" autosize></textarea>
+        </div>
+        <div class="button-box">
+          <span>then</span>
+        </div>
+        <div class="then">
+          <select [(ngModel)]="schedule.branch">
+            <option value="" disabled>Select</option>
+            <option
+              *ngFor="let item of dataList"
+              [value]="item.name"
+              [style.color]="item.color"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="schedule.selectedOption === 'Approve'" class="section">
+        <div class="button-box">
+          <span>else</span>
+        </div>
+        <div class="then2">
+          <select>
+            <option value="" disabled>Select</option>
+            <option
+              *ngFor="let item of dataList"
+              [value]="item.name"
+              [style.color]="item.color"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="activeBlock === 'if'">
+      <div class="section2">
+        <div class="button-box">
+          <span>If</span>
+        </div>
+        <div class="textarea">
+          <textarea [(ngModel)]="schedule.keepForText2" autosize></textarea>
+        </div>
+        <div class="button-box">
+          <span>else</span>
+        </div>
+        <div class="then">
+          <select [(ngModel)]="schedule.branch">
+            <option value="" disabled>Select</option>
+            <option
+              *ngFor="let item of dataList"
+              [value]="item.name"
+              [style.color]="item.color"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
